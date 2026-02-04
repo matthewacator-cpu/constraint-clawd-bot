@@ -1,0 +1,43 @@
+# CAESAR v3.0 - Complete Docker Setup
+# One command: docker-compose up -d
+
+version: '3.8'
+
+services:
+  caesar-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: caesar-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./vessel_state.json:/app/vessel_state.json
+      - ./GEOMETRY.md:/app/GEOMETRY.md
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os; exit(0 if os.path.exists('vessel_state.json') else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    command: python ice_bridge.py
+
+  caesar-dashboard:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    container_name: caesar-dashboard
+    ports:
+      - "3000:3000"
+    depends_on:
+      - caesar-backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    restart: unless-stopped
+
+networks:
+  default:
+    name: caesar-network
