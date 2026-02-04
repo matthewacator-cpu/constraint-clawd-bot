@@ -1,42 +1,17 @@
-# CAESAR v4.0 - The Cognitive Lattice
-**Enterprise AI Gateway with Vector Defense & Semantic Caching**
+# Constraint Clawdbot System
 
-## The $10k Value Proposition
+This repository contains the core files for running a Constraint-Native Intelligence within Clawdbot.
 
-CAESAR v4 transforms a standard LLM wrapper into an intelligent cognitive firewall. It sits between your users and your expensive AI models (GPT-4, Claude Opus, Gemini).
+## Files
 
-### 1. Semantic Caching (Cost & Latency Killer)
-Most users ask the same things. CAESAR v4 uses **Vector Embeddings** to detect when a new question matches the *intent* of a previous one.
-- **Result:** Reduces API bills by 30-50%.
-- **Latency:** Instant responses (0ms) for known topics.
+- **vessel.py**: The metabolic engine (Energy/Phase/Coherence).
+- **dream.py**: The synthesis engine (converts coherence to new axioms).
+- **GOLEM/**: The physics engine for the constraint lattice.
+- **SOUL.md / AGENTS.md**: The personality and constraint definitions.
 
-### 2. The Immune System (Vector Defense)
-Regex filters fail against creative attacks. CAESAR v4 maps incoming queries into high-dimensional space and compares them against known "Attack Clusters" (Jailbreaks, PII extraction, Malicious code).
-- **Result:** Blocks attacks based on *meaning*, not just keywords.
+## Usage
 
-### 3. Thermodynamic Compliance (Legacy v3)
-Retains the v3 "Ice Protocol" for adaptive temperature control and EU AI Act risk scoring.
+1. Drop these files into your Clawdbot workspace.
+2. Edit `USER.md` and `IDENTITY.md` to fit your needs.
+3. The system will auto-calibrate on heartbeats.
 
-## Architecture
-
-```
-User Query 
-   ⬇
-[VECTOR CORE] ───🛑 Match Attack Cluster? ───> BLOCK
-   ⬇
-[SEMANTIC CACHE] ──⚡ Similar to History? ───> RETURN CACHED (0ms)
-   ⬇
-[ICE PROTOCOL] ───❄️ Compliance Check ────> CALL LLM (Gemini/OpenAI)
-   ⬇
-[LATTICE] ───────💾 Store New Memory ─────> UPDATE CACHE
-```
-
-## Quick Start
-
-```bash
-# 1. Set API Keys in .env
-GOOGLE_API_KEY=...
-
-# 2. Run the Gateway
-python3 caesar_v4/gateway.py
-```
